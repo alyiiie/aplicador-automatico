@@ -1,0 +1,10 @@
+{
+  "name": "aws-aplicador-cv",
+  "version": "1.0.0",
+  "description": "This is a project to apply automatically to different job hunting websites via API given a set of cvs and key words",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-offline": "^13.4.0"
+  }
+}
