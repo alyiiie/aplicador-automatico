@@ -3,16 +3,14 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14 # Use the appropriate Node.js version
+      nodejs: 14
     commands:
-      - npm install -g serverless # Install Serverless Framework globally
-      - pip install --upgrade awscli # Install AWS CLI
-
+      - npm install -g serverless
+      - pip install --upgrade awscli
   build:
     commands:
       - serverless package --package-path package.zip # Package the app
-
-  deploy:
+  post_build:
     commands:
       - aws s3 cp package.zip s3://$S3_BUCKET/$S3_PREFIX/ # Upload package to S3
       - aws cloudformation package --template-file template.yaml --s3-bucket $S3_BUCKET --s3-prefix $S3_PREFIX --output-template-file packaged-template.yaml # Package CloudFormation template
